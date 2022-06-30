@@ -1,0 +1,73 @@
+div#nav-today(class="tab-pane fade show active", role="tabpanel", aria-labelledby="nav-today-tab")        
+    br
+    div(class="row", style={"padding-left":"20px"})
+        div(class="col-1 py-2 border-bottom border-right bg-light") Task#
+        div(class="col-3 py-2 border-bottom border-right bg-light") Title
+        div(class="col-2 py-2 border-bottom border-right bg-light") Task Type
+        div(class="col-2 py-2 border-bottom border-right bg-light") Assigned By
+        div(class="col-1 py-2 border-bottom border-right bg-light") Category
+        div(class="col-1 py-2 border-bottom border-right bg-light") Task Status
+        div(class="col-1 py-2 border-bottom bg-light") Task Info
+    
+    each r, i in alltasks 
+        div(class="row", style={"padding-left":"20px"})
+            div(class="col-1 py-2 border-bottom") 
+                input(type="radio" name="options" class="btn-check" id="btn-check-outlined" + i autocomplete="off")
+                label(class="btn btn-outline-secondary" for="btn-check-outlined" + i) #{r.task_num}
+            div(class="col-3 py-2 border-bottom") #{r.task_title}
+            div(class="col-2 py-2 border-bottom") #{r.task_type}
+            div(class="col-2 py-2 border-bottom") #{r.task_assignedby}
+            div(class="col-1 py-2 border-bottom") #{r.task_category}
+            div(class="col-1 py-2 border-bottom") #{r.task_status}
+            div(class="col-1 py-2 border-bottom")
+                button(class='btn btn-sm btn-primary modal-open', data-toggle='modal', data-target='#taskview', id=i)
+                    i(class="fas fa-info")  
+    
+    include taskview.pug
+
+    script.
+        $('#taskview').on('show.bs.modal', function(e) {   
+            var index = e.relatedTarget.id; 
+            var x = !{JSON.stringify(alltasks)}; 
+            //console.log(document.getElementById("#taskview-category").value);
+
+            //$(this).find('#taskview-assignedby').val(document.getElementById("task_assignedby_"+e.relatedTarget.id).innerHTML);
+            $(this).find('#taskview-title').val(x[index].task_title);
+            $(this).find('#taskview-type').val(x[index].task_type);
+            $(this).find('#taskview-status').val(x[index].task_status);
+            $(this).find('#taskview-assignedby').val(x[index].task_assignedby);            
+            $(this).find('#taskview-details').val(x[index].task_details);    
+            //Task Category: IF CONDITION
+            (x[index].task_category === 'Planned')?document.getElementById("category-planned").checked=true:document.getElementById("category-unplanned").checked=true;                    
+        })
+    
+    //
+        each r in allvalues 
+            div(class="row", style={"padding-left":"20px"})
+                each val, index in r  
+                    if index === 1
+                        div(class="col-3 py-2 border-bottom")= val   
+                    else if index === 2 || index === 3
+                        div(class="col-2 py-2 border-bottom")= val   
+                    else    
+                        div(class="col-1 py-2 border-bottom")= val
+
+    //             
+        div(class="row", style={"padding-left":"20px"})
+            each val, index in values  
+                if index === 1
+                    div(class="col-3 py-2 border-bottom")= val   
+                else if index === 2 || index === 3
+                    div(class="col-2 py-2 border-bottom")= val   
+                else    
+                    div(class="col-1 py-2 border-bottom")= val        
+
+        div(class="row", style={"padding-left":"20px"})
+            div(class="col-1 py-2 border-bottom") Task#
+            div(class="col-3 py-2 border-bottom") Title2
+            div(class="col-2 py-2 border-bottom") Task Type
+            div(class="col-2 py-2 border-bottom") Assigned By
+            div(class="col-1 py-2 border-bottom") Category
+            div(class="col-1 py-2 border-bottom") Current Status
+            div(class="col-1 py-2 border-bottom") Task Info
+    //

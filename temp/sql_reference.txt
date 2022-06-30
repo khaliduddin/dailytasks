@@ -1,0 +1,24 @@
+//ADD TASK: 
+//INSERT STATEMENT SYNTAX
+INSERT INTO nodejs_tasks(
+task_num, task_title, task_type, task_status, task_assignedby, task_category, task_details
+, task_created_on, task_created_by
+) 
+VALUES
+(
+(select max(task_num)+1 from nodejs_tasks)
+, ?, ?, ?, ?, ?, ?
+, datetime('now', 'localtime'), ?
+);
+
+//INSERT STATEMENT EXAMPLE
+INSERT INTO nodejs_tasks(
+task_num, task_title, task_type, task_status, task_assignedby, task_category, task_details
+, task_created_on, task_created_by, task_updated_on, task_updated_by
+) 
+VALUES
+(
+(select max(task_num)+1 from nodejs_tasks)
+, "Todays task 4", "Other", "In Progress", "Self", "Unplanned", "Added from backend"
+, datetime('now', 'localtime'), "User1", datetime('now', 'localtime'), "User1"
+);

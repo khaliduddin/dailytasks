@@ -1,0 +1,84 @@
+div#taskadd(class="modal fade", tabindex="-1", aria-labelledby="taskAddModalLabel", aria-hidden="true")
+    div(class="modal-dialog modal-dialog-centered modal-dialog-scrollable")
+      div(class="modal-content")
+        div(class="modal-header")
+          h5#taskaddModalLabel(class="modal-title") ADD NEW TASK
+          button(class="close", data-dismiss="modal", aria-label="Close")
+            
+        div(class="modal-body")          
+          form(action='process_post', method='post')                      
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')
+                    span#form-add-tasktitle(class='input-group-text') Task Title
+                input(type="text", class="form-control", placeholder="Enter Title", name="addtasktitle", label="Title", aria-describedby="form-add-tasktitle" required)
+
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')
+                    span#form-add-tasktype(class='input-group-text') Task Type
+                    div(class="dropdown")
+                        //label(for="exampleFormControlSelect1") Example select
+                        select(class="form-control", name="addtasktype")
+                            option Project
+                            option Meeting
+                            option Support Operations
+                            option Admin / Maintenance
+                            option Adhoc
+                            option Other
+                        
+                        //-
+                            button#dropdownMenuButton(class="btn btn-secondary dropdown-toggle", type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") Select Task Type
+                            div(class="dropdown-menu" aria-labelledby="dropdownMenuButton")
+                                a(class="dropdown-item" href="#") Project
+                                a(class="dropdown-item" href="#") Meeting
+                                a(class="dropdown-item" href="#") Support Operations
+                                a(class="dropdown-item" href="#") Admin / Maintenance
+                                a(class="dropdown-item" href="#") Adhoc
+                                a(class="dropdown-item" href="#") Other
+                        //
+                //input(type="text", class="form-control", placeholder="Select Type", label="Type", aria-describedby="form-add-tasktype")
+
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')
+                    span#form-add-taskstatus(class='input-group-text') Task Status
+                    div(class="dropdown")
+                        select(class="form-control", name="addtaskstatus")
+                            option Waiting
+                            option In Progress
+                            //option Move to Next Day 
+                            //option Cancelled                            
+
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')
+                    span#form-add-assignedby(class='input-group-text') Assigned By
+                input(type="text", class="form-control", placeholder="Assigned By", name="addassignedby", label="Assigned by", aria-describedby="form-add-assignedby" required)
+
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')                    
+                    span(class='input-group-text') Category
+                    div(class="input-group-text", style={"padding":"0 0 0 13px"})
+                        input#category-planned(type="radio", name="addcategory", value="Planned" required)
+                        label(for="category-planned", class="app-input-radio-text") Planned                             
+                    div(class="input-group-text", style={"padding":"0 0 0 13px"})
+                        input#category-unplanned(type="radio", name="addcategory", value="Unplanned" required)
+                        label(for="category-unplanned", class="app-input-radio-text") Unplanned                             
+                //input(type="text", class="form-control", placeholder="Select Category", label="category", aria-describedby="form-add-category")
+            
+            div(class='input-group mb-4')
+                div(class='input-group-prepend')
+                    span(class='input-group-text') Details
+                textarea(class="form-control", name="adddetails", aria-label="With textarea", required)
+            //hr(style={"border-right":"0;","border-left":"0;"})
+            //br
+            //br
+            //button(type='submit', class='btn btn-info float-right') Submit
+            input(type='submit', class='btn btn-info float-right')
+            br
+            br
+            //button Show Details
+            //br            
+            //a(class='button', href='/') Go to Home Page
+        //-
+            div(class="modal-footer")
+            button(type="button", class="btn btn-secondary", data-dismiss="modal") Close
+            button(type="button",class="btn btn-primary") Save changes
+        //

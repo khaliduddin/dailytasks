@@ -1,0 +1,30 @@
+div#taskremove(class="modal fade", tabindex="-1", aria-labelledby="taskRemoveModalLabel", aria-hidden="true")
+    div(class="modal-dialog modal-dialog-centered modal-dialog-scrollable")
+      div(class="modal-content")
+        div(class="modal-header")
+          h5#taskaddModalLabel(class="modal-title") REMOVE TASK
+          button(class="close", data-dismiss="modal", aria-label="Close")
+            
+        div(class="modal-body")          
+          form(action='/process_post', method='post')                      
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')
+                  span#form-add-tasktitle(class='input-group-text') Task Title
+                label(class="form-control") Example Title                
+            
+            div(class='input-group mb-4')
+                div(class='input-group-prepend')
+                    span(class='input-group-text') Details
+                textarea(class="form-control", aria-label="With textarea", disabled) test information
+                //label(class="form-control") Example Title 
+
+            div(class='input-group mb-4')
+                div(class='input-group-prepend')
+                    span(class='input-group-text') Provide Reason
+                textarea(class="form-control", aria-label="With textarea") 
+            //hr(style={"border-right":"0;","border-left":"0;"})
+            //br
+            //br
+            button(type='submit', class='btn btn-danger float-right') Remove
+            br
+            br

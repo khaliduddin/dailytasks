@@ -1,0 +1,80 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  button#addtask(class='btn btn-info btn-sm', data-toggle='modal', data-target='#taskadd') Add New Task
+  | 
+  button(class='btn btn-danger btn-sm modal-open', data-toggle='modal', data-target='#taskremove' disabled=false) Remove Task
+  | 
+  button(class='btn btn-warning btn-sm modal-open', data-toggle='modal', data-target='#taskchange' disabled=true) Change Task
+  //-
+    br
+    br
+
+    ul(class="nav nav-tabs")
+      li(class="nav-item")
+        a(class="nav-link active", href="#") Today
+      li(class="nav-item")
+        a(class="nav-link active", href="#") Upcoming
+      li(class="nav-item")
+        a(class="nav-link active", href="#") History
+      li(class="nav-item")
+        a(class="nav-link active", href="#") Settings
+  //
+
+  br
+  br
+
+  nav 
+    div(class="nav nav-tabs", role="tablist")
+      a#nav-today-tab(class="nav-link active", data-toggle="tab", href="#nav-today", role="tab", aria-controls="nav-today", aria-selected="true") Today
+      a#nav-nextinqueue-tab(class="nav-link", data-toggle="tab", href="#nav-nextinqueue", role="tab", aria-controls="nav-nextinqueue", aria-selected="false") Next in Queue
+      a#nav-history-tab(class="nav-link", data-toggle="tab", href="#nav-history", role="tab", aria-controls="nav-history", aria-selected="false") History 
+      a#nav-report-tab(class="nav-link", data-toggle="tab", href="#nav-report", role="tab", aria-controls="nav-settings", aria-selected="false") Work Report
+      a#nav-settings-tab(class="nav-link", data-toggle="tab", href="#nav-settings", role="tab", aria-controls="nav-settings", aria-selected="false") Settings
+
+  div#nav-tabcontent(class="tab-content")    
+    include includes/today.pug
+    include includes/nextinqueue.pug
+    include includes/history.pug        
+    div#nav-report(class="tab-pane fade", role="tabpanel", aria-labelledby="nav-report-tab")
+      div Placeholder content for the tab panel. This one relates to the home tab. Takes you miles high, so high, 'cause she’s got that one international smile. There's a stranger in my bed, there's a pounding in my head. Oh, no. In another life I would make you stay. ‘Cause I, I’m capable of anything. Suiting up for my crowning battle. Used to steal your parents' liquor and climb to the roof. Tone, tan fit and ready, turn it up cause its gettin' heavy. Her love is like a drug. I guess that I forgot I had a choice.
+    div#nav-settings(class="tab-pane fade", role="tabpanel", aria-labelledby="nav-settings-tab")
+      div Placeholder content for the tab panel. This one relates to the home tab. Takes you miles high, so high, 'cause she’s got that one international smile. There's a stranger in my bed, there's a pounding in my head. Oh, no. In another life I would make you stay. ‘Cause I, I’m capable of anything. Suiting up for my crowning battle. Used to steal your parents' liquor and climb to the roof. Tone, tan fit and ready, turn it up cause its gettin' heavy. Her love is like a drug. I guess that I forgot I had a choice.
+
+  include includes/taskadd.pug
+  include includes/taskremove.pug
+  include includes/taskchange.pug
+
+  //-
+    div(class="container")
+      div(class="row")
+        div(class="col") Task#
+        div(class="col") Title
+        div(class="col") Task Type
+        div(class="col") Assignment Type
+        div(class="col") Category
+        div(class="col") Task Info
+  //
+  //-
+    div#myModal1(class="modal fade", tabindex="-1", aria-labelledby="exampleModalLabel", aria-hidden="true")
+      div(class="modal-dialog modal-dialog-centered modal-dialog-scrollable")
+        div(class="modal-content")
+          div(class="modal-header")
+            h5#exampleModalLabel(class="modal-title") Modal title
+            button(class="close", data-dismiss="modal", aria-label="Close")
+              
+          div(class="modal-body")
+            h5 Popover in a modal
+            p This is example modal 1.
+            hr
+            h5 Tooltips in a modal
+            p This is example modal 2.
+          div(class="modal-footer")
+            button(type="button", class="btn btn-secondary", data-dismiss="modal") Close
+            button(type="button",class="btn btn-primary") Save changes
+  //
+  script.
+    console.log(window.document.getElementById("btn-check-outlined0").value);

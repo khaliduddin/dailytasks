@@ -1,0 +1,65 @@
+div#taskchange(class="modal fade", tabindex="-1", aria-labelledby="taskChangeModalLabel", aria-hidden="true")
+    div(class="modal-dialog modal-dialog-centered modal-dialog-scrollable")
+      div(class="modal-content")
+        div(class="modal-header")
+          h5#taskaddModalLabel(class="modal-title") ADD NEW TASK
+          button(class="close", data-dismiss="modal", aria-label="Close")
+            
+        div(class="modal-body")          
+          form(action='/process_post', method='post')                      
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')
+                    span#form-add-tasktitle(class='input-group-text') Task Title
+                input(type="text", class="form-control", placeholder="Enter Title", label="Title", aria-describedby="form-add-tasktitle")
+
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')
+                    span#form-add-tasktype(class='input-group-text') Task Type
+                    div(class="dropdown")                        
+                        select#exampleFormControlSelect1(class="form-control")
+                            option Project
+                            option Meeting
+                            option Support Operations
+                            option Admin / Maintenance
+                            option Adhoc
+                            option Other
+                        
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')
+                    span#form-add-taskstatus(class='input-group-text') Task Status
+                    div(class="dropdown")                        
+                        select#exampleFormControlSelect2(class="form-control")
+                            option Waiting
+                            option In Progress
+                            option Move to Next Day 
+                            option Cancelled
+                            
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')
+                    span#form-add-assignedby(class='input-group-text') Assigned By
+                input(type="text", class="form-control", placeholder="Assigned By", label="Assigned by", aria-describedby="form-add-assignedby")
+
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')                    
+                    span(class='input-group-text') Category
+                    div(class="input-group-text", style={"padding":"0 0 0 13px"})
+                        input#category-planned(type="radio", name="form-add-category")
+                        label(for="category-planned", class="app-input-radio-text") Planned                             
+                    div(class="input-group-text", style={"padding":"0 0 0 13px"})
+                        input#category-unplanned(type="radio", name="form-add-category")
+                        label(for="category-unplanned", class="app-input-radio-text") Unplanned                             
+                
+            div(class='input-group mb-4')
+                div(class='input-group-prepend')
+                    span(class='input-group-text') Details
+                textarea(class="form-control", aria-label="With textarea") 
+                        
+            button(type='submit', class='btn btn-warning float-right') Save Changes            
+            button(class='btn btn-danger float-right', data-dismiss="modal", style={"margin-right":"4px"}) Close        
+            br
+            br
+        //-
+          div(class="modal-footer")
+            button(type="button", class="btn btn-secondary", data-dismiss="modal") Close
+            button(type="button",class="btn btn-primary") Save changes
+        //

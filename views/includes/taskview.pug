@@ -1,0 +1,61 @@
+div#taskview(class="modal fade", tabindex="-1", aria-labelledby="taskViewModalLabel", aria-hidden="true")
+    div(class="modal-dialog modal-dialog-centered modal-dialog-scrollable")
+      div(class="modal-content")
+        div(class="modal-header")
+          h5#taskViewModalLabel(class="modal-title") TASK DETAILS
+          button(class="close", data-dismiss="modal", aria-label="Close")
+            
+        div(class="modal-body")          
+          form(action='/process_post', method='post')                      
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')
+                    span#form-view-tasktitle(class='input-group-text') Task Title
+                input#taskview-title(type="text", class="form-control app-input-read-only", placeholder="Enter Title", label="Title", aria-describedby="form-view-tasktitle" readonly)
+
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')
+                    span#form-view-tasktype(class='input-group-text') Task Type
+                    div(class="dropdown")
+                        //label(for="exampleFormControlSelect1") Example select
+                        select#taskview-type(class="form-control app-input-read-only" disabled)
+                            option Project
+                            option Meeting
+                            option Support Operations
+                            option Admin / Maintenance
+                            option Adhoc
+                            option Other
+                                  
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')
+                    span#form-view-taskstatus(class='input-group-text') Task Status
+                    div(class="dropdown")
+                        select#taskview-status(class="form-control app-input-read-only" disabled)
+                            option Waiting
+                            option In Progress
+                            //option Move to Next Day 
+                            //option Cancelled                            
+
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')
+                    span#form-view-assignedby(class='input-group-text') Assigned By
+                input#taskview-assignedby(type="text", class="form-control app-input-read-only", placeholder="Assigned By", label="Assigned by", aria-describedby="form-view-assignedby" readonly)
+
+            div(class='input-group mb-3')
+                div(class='input-group-prepend')                    
+                    span(class='input-group-text') Category
+                    div#taskview-category(class="input-group-text", style={"padding":"0 0 0 13px"})
+                        input#category-planned(type="radio", name="form-view-category" disabled)
+                        label(for="category-planned", class="app-input-radio-text") Planned                             
+                    div(class="input-group-text", style={"padding":"0 0 0 13px"})
+                        input#category-unplanned(type="radio", name="form-view-category" disabled)
+                        label(for="category-unplanned", class="app-input-radio-text") Unplanned                             
+                
+            div(class='input-group mb-4')
+                div(class='input-group-prepend')
+                    span(class='input-group-text') Details
+                textarea#taskview-details(class="form-control app-input-read-only", aria-label="With textarea", readonly) 
+            
+            input(type='submit', class='btn btn-info float-right', disabled)
+            br
+            br
+          
